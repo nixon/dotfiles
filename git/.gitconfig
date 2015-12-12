@@ -1,0 +1,23 @@
+[core]
+    excludesfile = ~/.gitignore
+    editor = vim
+[color]
+    status = auto
+    diff = auto
+    branch = auto
+[alias]
+    st = status
+    ss = status -s
+    ci = commit
+    cin = commit --interactive
+    co = checkout
+    br = branch
+    bv = branch -v
+    lg = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr %an)%Creset' --abbrev-commit --date=relative
+    rem = remote -v
+    # http://stackoverflow.com/a/7532131
+    apply-gitignore = !git ls-files -ci --exclude-standard -z | xargs -0r git rm --cached
+[push]
+    default = matching
+[branch]
+    autosetupmerge = true

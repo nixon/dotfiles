@@ -1,0 +1,30 @@
+snippet 1stst "first testcase in a file" b
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+import unittest
+
+
+class Test$1(unittest.TestCase):
+
+    def setUp(self):
+        super(Test$1, self).setUp()
+
+    def tearDown(self):
+        super(Test$1, self).tearDown()
+
+    def test_${2:1}(self):
+        ${0:pass}
+endsnippet
+
+snippet clst "testcase class" b
+class Test$1(unittest.TestCase):
+
+    def setUp(self):
+        super(Test$1, self).setUp()
+
+    def tearDown(self):
+        super(Test$1, self).tearDown()
+
+    def test_${2:1}(self):
+        ${0:pass}
+endsnippet

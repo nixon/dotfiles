@@ -1,0 +1,14 @@
+snippet tmpdir "create and remove a temporary directory" b
+${1:TMPDIR}=$(mktemp --tmpdir -d)
+if [[ -z "$TMPDIR" ]] ; then
+    echo "${0##*/}: couldnt create temporary directory" >&2
+    exit 1
+fi
+function cleanup {
+        cd /
+        /bin/rm -rf "$TMPDIR" 2>/dev/null
+}
+trap 'rc=$?; trap "" EXIT; cleanup; exit $rc' INT TERM QUIT HUP
+trap 'cleanup; exit' EXIT
+
+endsnippet
