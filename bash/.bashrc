@@ -16,7 +16,7 @@ umask 027
 
 # -------------------------------------------------------------------
 # git
-source /usr/share/doc/git-"$(git --version|awk '{print $NF}')"/contrib/completion/git-completion.bash
+source /usr/share/doc/git-"$(git --version|awk '{print $NF}')"/contrib/completion/git-completion.bash 2>/dev/null
 alias d='git diff'
 alias s='git status -s'
 alias b='git branch -avv'
@@ -31,22 +31,21 @@ export HISTTIMEFORMAT='%Y%m%d-%H:%M:%S '
 
 # -------------------------------------------------------------------
 # python
-PYTHONDIR=/usr
+# check in common directories for locally installed python versions
 for pydir in 27 2.7 34 3.5 35 3.5 ; do
     [[ -d /usr/local/python${pydir} ]] && {
-        PYTHONDIR=/usr/local/python${pydir}
-        export PATH=$PYTHONDIR/bin:$PATH
+        export PATH=/usr/local/python${pydir}/bin:$PATH
         break
     }
 done
 
 # python virtualenvwrapper
 # http://www.doughellmann.com/docs/virtualenvwrapper/
-if [ -f ${PYTHONDIR}/bin/virtualenvwrapper.sh ] ; then
+if [ -f $(which virtualenvwrapper.sh) ] ; then
     export WORKON_HOME=$HOME/virtualenv
-    export VIRTUALENVWRAPPER_PYTHON=${PYTHONDIR}/bin/python
+    export VIRTUALENVWRAPPER_PYTHON=$(which python)
     export PROJECT_HOME=$HOME/sb
-    source ${PYTHONDIR}/bin/virtualenvwrapper.sh
+    source $(which virtualenvwrapper.sh)
 fi
 
 # -------------------------------------------------------------------
@@ -102,7 +101,7 @@ function parse_git_branch {
 }
 
 function prompt_func {
-  PS1="${VIRTUAL_ENV:+(${VIRTUAL_ENV##*/})}${TEAL}\u@laptop ${YELLOW}\w${RESET}$(parse_git_branch)${RESET} \$ "
+  PS1="${VIRTUAL_ENV:+(${VIRTUAL_ENV##*/})}${TEAL}\u@\h ${YELLOW}\w${RESET}$(parse_git_branch)${RESET} \$ "
 }
 
 export PROMPT_DIRTRIM=3
