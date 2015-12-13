@@ -41,7 +41,7 @@ done
 
 # python virtualenvwrapper
 # http://www.doughellmann.com/docs/virtualenvwrapper/
-if [ -f $(which virtualenvwrapper.sh) ] ; then
+if [[ "X$(which virtualenvwrapper.sh)" != "X" ]] ; then
     export WORKON_HOME=$HOME/virtualenv
     export VIRTUALENVWRAPPER_PYTHON=$(which python)
     export PROJECT_HOME=$HOME/sb
