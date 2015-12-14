@@ -7,6 +7,8 @@ String Calculator screencast:
 
  * https://vimeo.com/8569257
 
+![demonstration](https://i.imgur.com/0ej2zhz.gif)
+
 
 ## Requirements
 
