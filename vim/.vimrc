@@ -16,10 +16,10 @@ set ts=4 sw=4 et
 set tw=72
 set formatoptions=croqn
 set wildmode=longest,list,full
-    
+
 set ignorecase smartcase
 set wrap
-    
+
 " when jumping to next quickfix, don't change the file in the current
 " window
 set switchbuf=useopen,split
@@ -45,22 +45,22 @@ map ,cd :vsplit DIFF<ENTER>:setlocal bt=nofile ft=diff<ENTER>:r !git diff --cach
 map <leader>d :!git diff<SPACE>
 map <leader>s :!git status<ENTER>
 map <leader>ga :!git add %
-  
+
 " ----------------------------------
 " http://learnvimscriptthehardway.stevelosh.com/chapters/07.html
 nnoremap <leader>ev :split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
-    
+
 " ----------------------------------
 " https://github.com/SirVer/ultisnips
 let g:ultisnips_python_style='none'
-    
+
 " ----------------------------------
 " https://github.com/scrooloose/syntastic.git
 "let g:syntastic_python_checkers=['pylint', 'pyflakes']
 let g:syntastic_python_checkers=['pyflakes']
 let g:syntastic_html_checkers=['validator', 'w3']
-    
+
 " ----------------------------------
 " https://github.com/reinh/vim-makegreen
 let g:makegreen_stay_on_file=1
